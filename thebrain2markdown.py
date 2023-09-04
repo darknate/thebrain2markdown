@@ -161,6 +161,9 @@ for key, value in nodes_json.items():
 for _, value in nodes_json.items():
     contents = []
     name = value["Name"].replace("/", "-")
+    max_len = 64
+    if len(name) > max_len:
+        name = name[:max_len]
     filename = "./obsidian/" + name + ".md"
     text_file = open(filename, "w")
     if "InternalFile" in value:
